@@ -1,0 +1,11 @@
+#!name = 航旅纵横去开屏广告
+#!desc = 屏蔽航旅纵横开屏/启动广告（需 MITM）
+
+[MITM]
+hostname = %APPID%.umetrip.com, api.umetrip.com, umetrip.com.cn, *.umetrip.com
+
+[Rewrite]
+^https?:\/\/.*umetrip\.com(\.cn)?\/.*(splash|launch|startup|boot|ad|ads|advert).* reject-dict
+
+[Script]
+http-response ^https?:\/\/.*umetrip\.com(\.cn)?\/.*(config|init|launch|appConfig|startup).* script-path=umetrip_no_splash.js, requires-body=true, tag=航旅纵横开屏净化
